@@ -5,7 +5,7 @@ VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	
-	config.vm.provision "shell", inline: "apt-get update && apt-get upgrade --yes"	
+	config.vm.provision "shell", inline: "apt-get update"	
 
 	
 	config.vm.define "saltstack" do |saltstack|
@@ -13,7 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		saltstack.vm.hostname="saltstack"
 		saltstack.vm.network "private_network", ip: "10.1.1.10"	
 		saltstack.vm.provision "shell" do |s| 
-			s.path= "sh/nstall_saltstack.sh"
+			s.path= "sh/install_saltstack.sh"
 			s.args = ["master"]
 		end	
 		saltstack.vm.provision "shell", path: "sh/syntax_yaml.sh"
