@@ -8,6 +8,7 @@ source:
         - user: root
         - group: root
         - mode: 644
+
 update:    
     cmd.run:    
         - name: apt-get -y update
@@ -26,4 +27,8 @@ haproxy:
         - required:
             - cmd: update
     
+set -i "S/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
+    cmd.run:
+        - required:
+            - pkg: haproxy
 
