@@ -27,7 +27,7 @@ haproxy:
         - required:
             - cmd: update
     
-set -i "S/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
+sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
     cmd.run:
         - required:
             - pkg: haproxy
