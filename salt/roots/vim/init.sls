@@ -6,8 +6,7 @@ vim:
         - installed
 
 /root/.vimrc:
-    file:
-        - managed
+    file.managed:
         - source: salt://vim/.vimrc
         - require:
             - pkg: vim
