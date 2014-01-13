@@ -23,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 	config.vm.define "haproxy" do |haproxy|
 		haproxy.vm.box = "debian_wheezy"
 		haproxy.vm.hostname="haproxy"
+		haproxy.vm.network "public_network"
 		haproxy.vm.network "private_network", ip: "10.1.1.20"
 		haproxy.vm.provision "shell" do |s| 
 			s.path= "sh/install_saltstack.sh"

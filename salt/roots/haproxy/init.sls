@@ -20,15 +20,22 @@ update:
 haproxy:
     pkg:
         - installed
-
-    service:
-        - running
-        - enable: True
         - required:
             - cmd: update
-    
-sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
-    cmd.run:
-        - required:
-            - pkg: haproxy
 
+#    service:
+#        - running
+#        - enable: True
+#        - required:
+#            - cmd: update
+    
+#sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
+#    cmd.run:
+#        - required:
+#            - pkg: haproxy
+
+#save_default_config:
+#    cmd.run:
+#        - name: mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original
+#        - required:
+#            - pkg: haproxy
