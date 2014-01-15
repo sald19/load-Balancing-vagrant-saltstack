@@ -10,3 +10,4 @@ base:
 
     'haproxy':
         - haproxy
+        - haproxy.config
