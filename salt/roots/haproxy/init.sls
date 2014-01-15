@@ -23,11 +23,9 @@ haproxy:
         - required:
             - cmd: update
 
-#    service:
-#        - running
-#        - enable: True
-#        - required:
-#            - cmd: update
+    service:
+        - running
+        - enable: True
     
 #sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
 #    cmd.run:
