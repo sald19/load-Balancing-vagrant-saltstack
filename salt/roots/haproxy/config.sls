@@ -1,6 +1,9 @@
 include:
     - haproxy
 
+exclude:
+    - id: update
+
 extend:
     haproxy:
         service:

@@ -9,10 +9,6 @@ source:
         - user: root
         - group: root
         - mode: 644
-        - exists: test -f /etc/apt/sources.list.d/haproxy.list
-
-#         - exists
-#         - name: /etc/apt/sources.list.d/haproxy.list
 
 update:    
     cmd.run:    
