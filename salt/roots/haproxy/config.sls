@@ -1,24 +1,22 @@
 include:
     - haproxy
 
-#extend:
-#    haproxy:
-#        service:
-#            - running
-#            - enable: True
-#            - watch:
-#                - file: config 
+extend:
+    haproxy:
+        service:
+            - running
+            - enable: True
+            - watch:
+                - file: config 
 
-sed -i "s/ENABLED=0/ENABLED=1/" /etc/default/haproxy:
-    cmd.run:
+postinstall:
+    cmd.script:
+        - source: salt://haproxy/postinstall.sh
+        - user: root
+        - shell: /bin/bash
         - required:
             - pkg: haproxy
-
-save_default_config:
-    cmd.run:
-        - name: if [ ! -f /etc/haproxy/haproxy.cfg.original ]; then mv /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.original; fi 
-        - requireid:
-            - pkg: haproxy
+        - unless: test -f /etc/haproxy/haproxy.cfg.original
 
 config:
     file:
@@ -28,5 +26,3 @@ config:
         - user: root
         - group: root
         - mode: 644
-        - watch:
-            - service: haproxy
