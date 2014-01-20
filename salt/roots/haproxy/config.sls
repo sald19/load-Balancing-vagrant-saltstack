@@ -1,8 +1,8 @@
 include:
     - haproxy
 
-exclude:
-    - id: update
+#exclude:
+#    - id: update
 
 extend:
     haproxy:
@@ -14,7 +14,7 @@ extend:
 
 postinstall:
     cmd.script:
-        - source: salt://haproxy/postinstall.sh
+        - source: salt://haproxy/sh/postinstall.sh
         - user: root
         - shell: /bin/bash
         - required:
