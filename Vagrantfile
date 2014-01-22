@@ -50,4 +50,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			s.args = ["minion"]
 		end	
 	end
+
+	config.vm.define "app01" do |app01|
+		app01.vm.box = "debian_wheezy"
+		app01.vm.hostname="app01"
+		app01.vm.network "private_network", ip: "10.1.1.50"
+		app01.vm.provision "shell" do |s| 
+			s.path= "sh/install_saltstack.sh"
+			s.args = ["minion"]
+		end	
+	end
 end

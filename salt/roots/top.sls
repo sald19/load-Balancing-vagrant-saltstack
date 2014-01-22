@@ -6,7 +6,12 @@ base:
         - vim
 
     'web0[1-2]':
-        - webserver
+        - nginx
+        - nginx.sites
+
+    'app01':
+        - php
+        - php.cli
 
     'haproxy':
         - haproxy

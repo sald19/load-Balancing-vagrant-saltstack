@@ -1,0 +1,36 @@
+server {
+    root /webs/{{ name }};
+    index index.html index.htm index.php;
+
+    #server_name localhost;
+    server_name {{ name }};
+
+    access_log /var/log/nginx/{{ name }}-access.log;
+    error_log  /var/log/nginx/{{ name }}-error.log error;
+
+    charset utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+
+    location = /favicon.ico { log_not_found off; access_log off; }
+    location = /robots.txt  { access_log off; log_not_found off; }
+
+    error_page 404 /index.php;
+
+    # pass the PHP scripts to php5-fpm
+    #location ~ \.php$ {
+    #    fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    #    # With php5-fpm:
+    #    fastcgi_pass unix:/var/run/php5-fpm.sock;
+    #    fastcgi_index index.php;
+    #    # fastcgi_param LARA_ENV local; # Environment variable for Laravel
+    #    include fastcgi_params;
+    #}
+
+    # Deny .htaccess file access
+    location ~ /\.ht {
+        deny all;
+    }
+}

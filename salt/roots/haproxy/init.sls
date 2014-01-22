@@ -30,5 +30,5 @@ haproxy:
     pkg:
         - installed
         - required:
-            - cmd: update
+            - cmd: preinstall
 
