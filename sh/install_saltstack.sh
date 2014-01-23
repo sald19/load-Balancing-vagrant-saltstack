@@ -52,6 +52,8 @@ elif [ $1 == 'minion'  ]
 then
     echo "----------instalando salt-minion------------"
     apt-get -y install salt-minion
+	sed -i 's/#master: salt/master: 10.1.1.10/' /etc/salt/minion
+	service salt-minion restart
 else
     echo "el parametro es minion o master"
 fi

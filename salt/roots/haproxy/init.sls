@@ -29,6 +29,6 @@ preinstall:
 haproxy:
     pkg:
         - installed
-        - required:
+        - require:
             - cmd: preinstall
 

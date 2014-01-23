@@ -13,7 +13,7 @@
         - context:
             name: {{ site }}
 
-ln -s /etc/nginx/sites-available/{{ site }} /etc/nginx/sites-enabled/{{ site }} && mkdir -p /webs/{{ site }} && echo "<h1>{{ site }}</h1>" > /webs/{{ site }}/index.html:
+ln -s /etc/nginx/sites-available/{{ site }} /etc/nginx/sites-enabled/{{ site }}:
     cmd.run:
         - require:
             - file: {{ site }}
