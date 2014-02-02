@@ -1,6 +1,6 @@
-{% import_yaml "nginx/lib.sls" as sites %}
+{% import_yaml "nginx/lib.sls" as all %}
 
-{% for site in sites.sites %}
+{% for site, value in all.items() %}
 {{ site }}:
     file:
         - managed
