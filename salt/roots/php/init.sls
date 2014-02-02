@@ -7,8 +7,8 @@ php:
     - name: {{ php.fpm_pkg }}
 
 {% for key, value in all.items() %}
-#touch /root/{{ key }} & touch /root/{{ value[0] }}:
-mkdir -p /webs/{{ value[0] }} && echo "<?php\necho '<pre>';\nvar_dump('{{ key }}');\n" > /webs/{{ value[0] }}/index.php:
+#touch /root/{{ key }} & touch /root/{{ value[0].path }}:
+mkdir -p /webs/{{ value[0].path }} && echo "<?php\necho '<pre>';\nvar_dump('{{ key }}');\n" > /webs/{{ value[0].path }}/index.php:
     cmd:
         - run
         - user: root
