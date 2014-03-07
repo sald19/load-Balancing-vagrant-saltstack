@@ -1,25 +1,24 @@
-{% import_yaml "nginx/lib.sls" as all %}
+{% import_yaml "nginx/lib.sls" as sites %}
 
-{% for site, value in all.items() %}
-{{ site }}:
+{% for key, value in sites.items() %}
+{{ value[0].path }}:
     file:
         - managed
-        - name: /etc/nginx/sites-available/{{ site }}
+        - name: /etc/nginx/sites-available/{{ value[0].path }}
         - source: salt://nginx/virtual-host
         - user: root
         - group: root
         - mode: 644
         - template: jinja
         - context:
-            name: {{ site }}
+            name: {{ value[0].path }}
 
-ln -s /etc/nginx/sites-available/{{ site }} /etc/nginx/sites-enabled/{{ site }}:
+ln -s /etc/nginx/sites-available/{{ value[0].path }} /etc/nginx/sites-enabled/{{ value[0].path }}:
     cmd.run:
         - require:
-            - file: {{ site }}
-        - unless: test -f /etc/nginx/sites-enabled/{{ site }}
+            - file: {{ value[0].path }}
+        - unless: test -f /etc/nginx/sites-enabled/{{ value[0].path }}
 
-# mkdir -p /webs/{{ site }} && echo "<h1>{{ site }}</h1>" > /webs/{{ site }}
 {% endfor %}
 
 service nginx reload:

@@ -40,7 +40,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 			s.args = ["minion"]
 		end	
 	end
-	
+
 	config.vm.define "web02" do |web02|
 		web02.vm.box = "debian_wheezy"
 		web02.vm.hostname="web02"

@@ -1,14 +1,5 @@
 carlos.com:
-    - path: carlos
+    - path: carlos.com
 
 hosmel.com:
-    - path: hosmel 
-#        - name: carlos.com
-#        - path: carlos.com
-        
-#     - hosmel.com
-#    dir:
-#        - carlos
-#        - hosmel
-#dir:
-#    - carlos
+    - path: hosmel.com
